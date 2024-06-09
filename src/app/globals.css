@@ -2,32 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 232 96% 45%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 181 100% 50%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 210 100% 70%; /* Exemplo: Azul Claro */
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 50 100% 70%; /* Exemplo: Amarelo Claro */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+/* Adicione isso ao seu arquivo CSS global */
+.wave {
+  z-index: -1;
+  position: relative;
+  clip-path: ellipse(75% 160% at 40% 100%);
+  background: linear-gradient(to right, #0033cc, #0055ff);
+  height: 1200px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.clip-arrow {
+  clip-path: polygon(0 0, 93% 0, 100% 50%, 88.5% 100%, 0% 100%);
+}
+
+/* styles/globals.css */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor do track da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0033cc; /* Cor do thumb da barra de rolagem (cor primária) */
+  border-radius: 20px;
+  border: 3px solid #f1f1f1; /* Para adicionar espaço ao redor do thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0033cc; /* Cor do thumb quando está em hover */
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0033cc #f1f1f1;
 }
